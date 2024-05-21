@@ -218,3 +218,24 @@ document.getElementById("beverages").addEventListener("click", () => {
   });
   document.getElementById("menu-section").innerHTML = clutter;
 });
+
+inputBox.addEventListener("input", () => {
+  clutter = "";
+  menu.forEach((menuItem) => {
+    if (menuItem.title.toLowerCase().includes(inputBox.value)) {
+      clutter += `<div id="menu-item">
+                <img
+                  src=${menuItem.img}
+                  alt=""
+                />
+                <h2>${menuItem.title}</h2>
+                <div id="food-details">
+                  <p class="category">${menuItem.category}</p>
+                  <p class="about">${menuItem.description}</p>
+                </div>
+                <p class="price">${menuItem.price}</p>
+              </div>`;
+    }
+  });
+  document.getElementById("menu-section").innerHTML = clutter;
+});
