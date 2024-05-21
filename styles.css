@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Sedan SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#navbar {
+  height: 12%;
+  padding: 10px 70px;
+  display: flex;
+  color: rgb(241, 241, 241);
+  background-color: rgb(197, 178, 89);
+  justify-content: space-between;
+  align-items: center;
+}
+
+#search-input {
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#input-box {
+  width: 70%;
+  border-radius: 5px;
+  padding: 7px 10px;
+  border: none;
+}
+
+#search-input i:hover,
+#nav-btns h3:hover {
+  color: rgb(68, 68, 68);
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-btns {
+  display: flex;
+  gap: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+#menu-section {
+  width: 80%;
+  margin: 40px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+  row-gap: 40px;
+}
+
+#menu-item {
+  background-color: rgb(240, 240, 240);
+  width: 70%;
+  height: 100%;
+  color: black;
+  padding: 20px 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#menu-item:hover {
+  box-shadow: 5px 5px 5px rgb(211, 211, 211);
+  transform: scale(1.01);
+  transition: all 0.1s ease-in-out;
+}
+
+#menu-item img {
+  object-fit: cover;
+  object-position: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(145, 145, 145);
+  width: 100%;
+  height: 15rem;
+}
+
+#menu-item h2 {
+  letter-spacing: 1px;
+  font-weight: bolder;
+  color: rgb(111, 98, 40);
+}
+
+#food-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.category {
+  font-weight: bold;
+  font-size: small;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.about {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
+.price {
+  text-align: right;
+}
