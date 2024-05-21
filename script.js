@@ -1,4 +1,5 @@
 const inputBox = document.getElementById("input-box");
+const menuSection = document.getElementById("menu-section");
 const menu = [
   {
     id: 1,
@@ -114,52 +115,10 @@ const menu = [
 ];
 
 var clutter = "";
-menu.forEach((menuItem) => {
-  clutter += `<div id="menu-item">
-    <img
-      src=${menuItem.img}
-      alt=""
-    />
-    <h2>${menuItem.title}</h2>
-    <div id="food-details">
-      <p class="category">${menuItem.category}</p>
-      <p class="about">${menuItem.description}</p>
-    </div>
-    <p class="price">${menuItem.price}</p>
-  </div>`;
-});
-
-document.getElementById("menu-section").innerHTML = clutter;
-
-document.getElementById("all").addEventListener("click", () => {
-  document.getElementById("menu-section").innerHTML = clutter;
-});
-
-document.getElementById("starters").addEventListener("click", () => {
+const updateMenuView = (field) => {
   clutter = "";
   menu.forEach((menuItem) => {
-    if (menuItem.category == "starters") {
-      clutter += `<div id="menu-item">
-            <img
-              src=${menuItem.img}
-              alt=""
-            />
-            <h2>${menuItem.title}</h2>
-            <div id="food-details">
-              <p class="category">${menuItem.category}</p>
-              <p class="about">${menuItem.description}</p>
-            </div>
-            <p class="price">${menuItem.price}</p>
-          </div>`;
-    }
-  });
-  document.getElementById("menu-section").innerHTML = clutter;
-});
-
-document.getElementById("mains").addEventListener("click", () => {
-  clutter = "";
-  menu.forEach((menuItem) => {
-    if (menuItem.category == "mains") {
+    if (menuItem.category == field || field == "all" || field == null) {
       clutter += `<div id="menu-item">
               <img
                 src=${menuItem.img}
@@ -174,52 +133,15 @@ document.getElementById("mains").addEventListener("click", () => {
             </div>`;
     }
   });
-  document.getElementById("menu-section").innerHTML = clutter;
-});
+  menuSection.innerHTML = clutter;
+  if (clutter === "") {
+    menuSection.innerHTML = "No items to show as of now :(";
+  } else {
+    menuSection.innerHTML = clutter;
+  }
+};
 
-document.getElementById("desserts").addEventListener("click", () => {
-  clutter = "";
-  menu.forEach((menuItem) => {
-    if (menuItem.category == "desserts") {
-      clutter += `<div id="menu-item">
-              <img
-                src=${menuItem.img}
-                alt=""
-              />
-              <h2>${menuItem.title}</h2>
-              <div id="food-details">
-                <p class="category">${menuItem.category}</p>
-                <p class="about">${menuItem.description}</p>
-              </div>
-              <p class="price">${menuItem.price}</p>
-            </div>`;
-    }
-  });
-  document.getElementById("menu-section").innerHTML = clutter;
-});
-
-document.getElementById("beverages").addEventListener("click", () => {
-  clutter = "";
-  menu.forEach((menuItem) => {
-    if (menuItem.category == "beverages") {
-      clutter += `<div id="menu-item">
-              <img
-                src=${menuItem.img}
-                alt=""
-              />
-              <h2>${menuItem.title}</h2>
-              <div id="food-details">
-                <p class="category">${menuItem.category}</p>
-                <p class="about">${menuItem.description}</p>
-              </div>
-              <p class="price">${menuItem.price}</p>
-            </div>`;
-    }
-  });
-  document.getElementById("menu-section").innerHTML = clutter;
-});
-
-inputBox.addEventListener("input", () => {
+const handleInput = () => {
   clutter = "";
   menu.forEach((menuItem) => {
     if (menuItem.title.toLowerCase().includes(inputBox.value)) {
@@ -237,5 +159,37 @@ inputBox.addEventListener("input", () => {
               </div>`;
     }
   });
-  document.getElementById("menu-section").innerHTML = clutter;
-});
+
+  if (clutter === "") {
+    menuSection.innerHTML = "No items to show as of now :(";
+  } else {
+    menuSection.innerHTML = clutter;
+  }
+};
+
+document
+  .getElementById("all")
+  .addEventListener("click", () => updateMenuView("all"));
+
+document
+  .getElementById("starters")
+  .addEventListener("click", () => updateMenuView("starters"));
+
+document
+  .getElementById("mains")
+  .addEventListener("click", () => updateMenuView("mains"));
+
+document
+  .getElementById("desserts")
+  .addEventListener("click", () => updateMenuView("desserts"));
+
+document
+  .getElementById("beverages")
+  .addEventListener("click", () => updateMenuView("beverages"));
+
+inputBox.addEventListener("input", () => handleInput());
+document
+  .getElementById("search-btn")
+  .addEventListener("click", () => handleInput());
+
+updateMenuView(null);
