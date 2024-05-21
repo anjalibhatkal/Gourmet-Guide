@@ -192,4 +192,7 @@ document
   .getElementById("search-btn")
   .addEventListener("click", () => handleInput());
 
+document
+  .getElementById("title")
+  .addEventListener("click", () => updateMenuView("all"));
 updateMenuView(null);

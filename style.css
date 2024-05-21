@@ -38,9 +38,10 @@ body {
   border: none;
 }
 
+#title:hover,
 #search-input i:hover,
 #nav-btns h3:hover {
-  color: rgb(68, 68, 68);
+  color: rgb(120, 94, 0);
   transition: color 0.3s ease-in-out;
   cursor: pointer;
 }
